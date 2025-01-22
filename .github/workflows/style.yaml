@@ -1,0 +1,27 @@
+name: Style
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+  push:
+    branches:
+      - main
+
+jobs:
+  style_checking:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install format dependencies
+        run:  sudo apt install clang-format
+              sudo apt install cmake_format
+
+      - name: configure
+        run:  cmake -S. -Bbuild/style -DENABLE_STYLE_CHECKS=ON -DENABLE_UNIT_TESTS=OFF
+
+      - name: check style
+        run:  cmake --build build/style --target check-format
