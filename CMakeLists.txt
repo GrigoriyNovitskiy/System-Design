@@ -3,7 +3,8 @@ project(System_Design)
 
 set(CMAKE_CXX_STANDARD 17)
 
-include_directories(include)
+include_directories(include/utility)
+include_directories(include/algorithms)
 
 set(SOURCES
         src/algorithms/a_star.cpp
@@ -14,8 +15,12 @@ set(SOURCES
         src/algorithms/ford_bellman.cpp
         src/algorithms/kuhn.cpp
         src/algorithms/mincost_kflow.cpp
-        src/utility/main.cpp
-        tests/main.cpp
+        src/utility/graph.cpp
+        src/utility/utility.cpp
+        src/main.cpp
 )
 
 add_executable(System_Design ${SOURCES})
+
+add_subdirectory(tests)
+
