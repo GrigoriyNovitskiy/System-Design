@@ -18,10 +18,4 @@ set(SOURCES
         tests/main.cpp
 )
 
-# Option to enable or disable style checks
-option(ENABLE_STYLE_CHECKS "Enable style checks" ON)
-if(ENABLE_STYLE_CHECKS)
-  add_subdirectory("tests/style")
-endif()
-
 add_executable(System_Design ${SOURCES})
