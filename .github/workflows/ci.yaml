@@ -11,15 +11,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Checkout code
       - uses: actions/checkout@v4
 
-          - name: Install dependencies
-            run: |
+      - name: Install dependencies
+        run: |
               sudo apt update
               sudo apt install -y build-essential cmake
               sudo apt install clang-format
-              sudo apt install cmake_format
+              sudo apt install cmake-format
 
-          - name: Configure project with CMake
-            run: |
+      - name: Configure project with CMake
+        run: |
               cmake -S . -B build
