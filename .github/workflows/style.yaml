@@ -18,7 +18,6 @@ jobs:
 
       - name: Install format dependencies
         run:  sudo apt install clang-format
-              sudo apt install cmake_format
 
       - name: configure
         run:  cmake -S. -Bbuild/style -DENABLE_STYLE_CHECKS=ON -DENABLE_UNIT_TESTS=OFF
