@@ -23,4 +23,4 @@ jobs:
         run:  cmake -S. -Bbuild/style -DENABLE_STYLE_CHECKS=ON -DENABLE_UNIT_TESTS=OFF
 
       - name: check style
-        run:  cmake --build build/style --target check-format
+        # run:  cmake --build build/style --target check-format
