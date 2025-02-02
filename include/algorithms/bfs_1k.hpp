@@ -1,27 +1,26 @@
 #ifndef BFS_1K_HPP
 #define BFS_1K_HPP
 
-#include "graph.hpp"
-
 #include <limits>
 #include <queue>
+
+#include "graph.hpp"
 
 namespace graph {
 
 template <typename edgeType>
 class BFS_1k {
 public:
-    BFS_1k(AdjacencyListGraph<edgeType> &graph, std::int32_t maxWeight)
+    BFS_1k(AdjacencyListGraph<edgeType>& graph, std::int32_t maxWeight)
         : m_graph(graph), m_maxWeight(maxWeight) {}
 
     class BFSResult {
     public:
-        BFSResult(const std::vector<std::int32_t>& distances, const std::vector<std::int32_t>& accessibility) :
-         m_distances(distances), m_accessibility(accessibility) {}
+        BFSResult(const std::vector<std::int32_t>& distances,
+                  const std::vector<std::int32_t>& accessibility)
+            : m_distances(distances), m_accessibility(accessibility) {}
 
-        [[nodiscard]] const std::vector<std::int32_t>& distances() const {
-            return m_distances;
-        }
+        [[nodiscard]] const std::vector<std::int32_t>& distances() const { return m_distances; }
 
         [[nodiscard]] const std::vector<std::int32_t>& accessibility() const {
             return m_accessibility;
@@ -36,14 +35,12 @@ public:
     BFSResult run(std::int32_t startVertex);
 
 private:
-    AdjacencyListGraph<edgeType> &m_graph;
+    AdjacencyListGraph<edgeType>& m_graph;
     std::int32_t m_maxWeight;
 };
 
-
 template <typename edgeType>
-BFS_1k(AdjacencyListGraph<Edge<edgeType>> &, int, int) -> BFS_1k<edgeType>;
-
+BFS_1k(AdjacencyListGraph<Edge<edgeType>>&, int, int) -> BFS_1k<edgeType>;
 
 template <typename edgeType>
 typename BFS_1k<edgeType>::BFSResult BFS_1k<edgeType>::run(std::int32_t startVertex) {
@@ -71,7 +68,7 @@ typename BFS_1k<edgeType>::BFSResult BFS_1k<edgeType>::run(std::int32_t startVer
         reachability[currentVertex] = true;
 
         auto neighbours = m_graph.getNeighbours(currentVertex);
-        for (const auto &edge : neighbours) {
+        for (const auto& edge : neighbours) {
             std::int32_t newDistance = currentDistance + edge.edge();
             if (newDistance < distances[edge.to()]) {
                 distances[edge.to()] = newDistance;

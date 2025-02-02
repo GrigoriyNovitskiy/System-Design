@@ -22,13 +22,9 @@ public:
 
     virtual void printEdges(std::ostream &ostream) const = 0;
 
-    [[nodiscard]] std::int32_t numberVertices() const {
-        return m_numberVertices;
-    }
+    [[nodiscard]] std::int32_t numberVertices() const { return m_numberVertices; }
 
-    [[nodiscard]] std::int32_t numberEdges() const {
-        return m_numberEdges;
-    }
+    [[nodiscard]] std::int32_t numberEdges() const { return m_numberEdges; }
 
 protected:
     std::int32_t m_numberVertices;
@@ -119,7 +115,7 @@ public:
     }
 
 private:
-    std::vector<std::vector<Edge<edgeType>>>m_adjMatrix;  // Матрица смежности
+    std::vector<std::vector<Edge<edgeType>>> m_adjMatrix;  // Матрица смежности
 };
 
 };  // namespace graph

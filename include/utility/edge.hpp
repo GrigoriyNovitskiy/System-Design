@@ -18,17 +18,11 @@ struct Edge {
     Edge &operator=(const Edge &other) = default;
     Edge &operator=(Edge &&other) noexcept = default;
 
-    [[nodiscard]] std::int32_t from() const {
-        return m_from;
-    }
+    [[nodiscard]] std::int32_t from() const { return m_from; }
 
-    [[nodiscard]] std::int32_t to() const {
-        return m_to;
-    }
+    [[nodiscard]] std::int32_t to() const { return m_to; }
 
-    [[nodiscard]] edgeType edge() const {
-        return m_edge;
-    }
+    [[nodiscard]] edgeType edge() const { return m_edge; }
 
 private:
     std::int32_t m_from{};  // Номер вершины, из которой ведет ребро

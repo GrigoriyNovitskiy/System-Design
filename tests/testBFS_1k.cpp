@@ -1,5 +1,5 @@
-#include "gtest/gtest.h"
 #include "bfs_1k.hpp"
+#include "gtest/gtest.h"
 
 TEST(BFS_1kTest, BaseTest1) {
     graph::AdjacencyListGraph<int> graph(4, false);
@@ -10,9 +10,9 @@ TEST(BFS_1kTest, BaseTest1) {
 
     graph::BFS_1k bfs(graph, 3);
     auto bfsResult = bfs.run(0);
-    std::vector <std::int32_t> correct_distances = {0, 3, 1, 2};
+    std::vector<std::int32_t> correct_distances = {0, 3, 1, 2};
     ASSERT_EQ(bfsResult.distances(), correct_distances);
-    std::vector <std::int32_t> correct_accessibility = {1, 1, 1, 1};
+    std::vector<std::int32_t> correct_accessibility = {1, 1, 1, 1};
     ASSERT_EQ(bfsResult.accessibility(), correct_accessibility);
 }
 
@@ -25,9 +25,9 @@ TEST(BFS_1kTest, BaseTest2) {
 
     graph::BFS_1k bfs(graph, 1);
     auto bfsResult = bfs.run(0);
-    std::vector <std::int32_t> correct_distances = {0, 1, 1, 2};
+    std::vector<std::int32_t> correct_distances = {0, 1, 1, 2};
     ASSERT_EQ(bfsResult.distances(), correct_distances);
-    std::vector <std::int32_t> correct_accessibility = {1, 1, 1, 1};
+    std::vector<std::int32_t> correct_accessibility = {1, 1, 1, 1};
     ASSERT_EQ(bfsResult.accessibility(), correct_accessibility);
 }
 
@@ -39,8 +39,9 @@ TEST(BFS_1kTest, BaseTest3) {
 
     graph::BFS_1k bfs(graph, 3);
     auto bfsResult = bfs.run(0);
-    std::vector <std::int32_t> correct_distances = {0, 1, 3, 6, std::numeric_limits<std::int32_t>::max()};
+    std::vector<std::int32_t> correct_distances = {0, 1, 3, 6,
+                                                   std::numeric_limits<std::int32_t>::max()};
     ASSERT_EQ(bfsResult.distances(), correct_distances);
-    std::vector <std::int32_t> correct_accessibility = {1, 1, 1, 1, 0};
+    std::vector<std::int32_t> correct_accessibility = {1, 1, 1, 1, 0};
     ASSERT_EQ(bfsResult.accessibility(), correct_accessibility);
 }
