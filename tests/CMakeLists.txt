@@ -15,19 +15,18 @@ target_link_libraries(GTest::Main INTERFACE gtest_main)
 include_directories(../include/algorithms)
 include_directories(../include/utility)
 
-add_executable(bfs1k_test
+add_executable(tests
         testBFS_1k.cpp
         main.cpp
-        ../src/utility/graph.cpp
         ../src/utility/utility.cpp
         ../src/algorithms/bfs1_k.cpp
 )
 
-target_link_libraries(bfs1k_test
+target_link_libraries(tests
         PRIVATE
         GTest::GTest
         GTest::Main
 )
 
 enable_testing()
-add_test(bfs1k_gtests bfs1k_test)
+add_test(bfs1k_gtests tests)

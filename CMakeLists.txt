@@ -15,7 +15,6 @@ set(SOURCES
         src/algorithms/ford_bellman.cpp
         src/algorithms/kuhn.cpp
         src/algorithms/mincost_kflow.cpp
-        src/utility/graph.cpp
         src/utility/utility.cpp
         src/main.cpp
 )
