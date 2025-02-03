@@ -11,7 +11,7 @@ namespace graph {
 template <typename edgeType>
 class BFS_1k {
 public:
-    BFS_1k(AdjacencyListGraph<edgeType>& graph, std::int32_t maxWeight)
+    BFS_1k(Graph<edgeType>& graph, std::int32_t maxWeight)
         : m_graph(graph), m_maxWeight(maxWeight) {}
 
     class BFSResult {
@@ -35,7 +35,7 @@ public:
     BFSResult run(std::int32_t startVertex);
 
 private:
-    AdjacencyListGraph<edgeType>& m_graph;
+    Graph<edgeType>& m_graph;
     std::int32_t m_maxWeight;
 };
 
@@ -67,7 +67,8 @@ typename BFS_1k<edgeType>::BFSResult BFS_1k<edgeType>::run(std::int32_t startVer
         }
         reachability[currentVertex] = true;
 
-        auto neighbours = m_graph.getNeighbours(currentVertex);
+        std::vector<Edge<edgeType>> neighbours;
+        m_graph.getNeighbours(currentVertex, neighbours);
         for (const auto& edge : neighbours) {
             std::int32_t newDistance = currentDistance + edge.edge();
             if (newDistance < distances[edge.to()]) {

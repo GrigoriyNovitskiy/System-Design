@@ -17,8 +17,8 @@ include_directories(../include/utility)
 
 add_executable(tests
         testBFS_1k.cpp
+        test_graph.cpp
         main.cpp
-        ../src/utility/utility.cpp
         ../src/algorithms/bfs1_k.cpp
 )
 

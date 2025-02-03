@@ -18,6 +18,10 @@ struct Edge {
     Edge &operator=(const Edge &other) = default;
     Edge &operator=(Edge &&other) noexcept = default;
 
+    bool operator==(const Edge &other) const {
+        return m_edge == other.m_edge && m_from == other.m_from && m_to == other.m_to;
+    }
+
     [[nodiscard]] std::int32_t from() const { return m_from; }
 
     [[nodiscard]] std::int32_t to() const { return m_to; }
