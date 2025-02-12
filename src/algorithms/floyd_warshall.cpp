@@ -1,5 +1,5 @@
-#include <limits>
-
 #include "floyd_warshall.hpp"
+
+#include <limits>
 
 namespace graph {};  // namespace graph
