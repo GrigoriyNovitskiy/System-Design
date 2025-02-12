@@ -8,7 +8,7 @@ include_directories(include/algorithms)
 
 set(SOURCES
         src/algorithms/a_star.cpp
-        src/algorithms/bfs1_k.cpp
+        src/algorithms/bfs_1k.cpp
         src/algorithms/dijkstra.cpp
         src/algorithms/dinic.cpp
         src/algorithms/floyd_warshall.cpp

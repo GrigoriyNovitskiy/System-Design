@@ -13,7 +13,7 @@ add_library(GTest::Main INTERFACE IMPORTED)
 target_link_libraries(GTest::Main INTERFACE gtest_main)
 
 add_executable(tests
-        testBFS_1k.cpp
+        test_bfs1k.cpp
         test_graph.cpp
         main.cpp
 )
@@ -24,6 +24,8 @@ target_link_libraries(tests
         GTest::GTest
         GTest::Main
 )
+
+add_subdirectory(benchmarks)
 
 enable_testing()
 add_test(bfs1k_gtests tests)
