@@ -1,7 +1,7 @@
 ## Архитектура
 
 ### Структура графов
-![Структура графов](./images/arc.png)
+![Структура графов](./images/arc.png?raw=true)
 
 - `class Edge <edgeType>`
     - Поля
@@ -58,7 +58,7 @@
 - Методы
   - `Dijkstra(Graph<edgeType>& graph)` - конструктор 
   - `std::vector<std::int64_t> runStandard(std::int32_t start)` - алгоритм за $O(n^2)$
-  - `std::vector<std::int64_t> runOptimized(std::int32_t start)` - алгоритм за $O(E\logV)$
+  - `std::vector<std::int64_t> runOptimized(std::int32_t start)` - алгоритм за $O(E\log⁡V)$
 
 #### Алгоритм Флойда-Уоршелла
 `class FloydWarshall <edgeType>`
