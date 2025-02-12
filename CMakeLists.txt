@@ -16,10 +16,11 @@ set(SOURCES
         src/algorithms/kuhn.cpp
         src/algorithms/mincost_kflow.cpp
         src/utility/utility.cpp
-        src/main.cpp
 )
 
-add_executable(System_Design ${SOURCES})
+add_library(System_Design STATIC ${SOURCES})
+
+target_include_directories(System_Design PUBLIC include)
 
 add_subdirectory(tests)
 

@@ -71,7 +71,7 @@ struct Edge {
 
     [[nodiscard]] std::int32_t weight() const { return m_weight; }
 
-    [[nodiscard]] std::int32_t label() const { return m_weight; }
+    [[nodiscard]] std::string label() const { return m_label; }
 
 private:
     std::int32_t m_weight;
