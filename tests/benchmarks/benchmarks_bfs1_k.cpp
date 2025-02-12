@@ -1,8 +1,9 @@
 #include <benchmark/benchmark.h>
-#include "bfs_1k.hpp"
 
 #include <chrono>
 #include <random>
+
+#include "bfs_1k.hpp"
 
 std::mt19937 myRandom(std::chrono::steady_clock::now().time_since_epoch().count());
 
@@ -23,17 +24,17 @@ static void BM_BFS_AdjacencyListGraph(benchmark::State &state) {
         std::int32_t weight = myRandom() % maxWeight + 1;
         graph.addEdge(vertex1, vertex2, weight);
     }
-    for (auto _: state) {
+    for (auto _ : state) {
         graph::BFS_1k bfs(graph, maxWeight);
         benchmark::DoNotOptimize(bfs.run(0));
     }
 }
 
-BENCHMARK(BM_BFS_AdjacencyListGraph)->
-        Range(MIN_NUMBER_OF_VERTEXES_ADJLIST, MAX_NUMBER_OF_VERTEXES_ADJLIST)->
-        RangeMultiplier(STEP);
+BENCHMARK(BM_BFS_AdjacencyListGraph)
+    ->Range(MIN_NUMBER_OF_VERTEXES_ADJLIST, MAX_NUMBER_OF_VERTEXES_ADJLIST)
+    ->RangeMultiplier(STEP);
 
-static constexpr std::int32_t NUMBER_OF_EDGES_ADJMATRIX= 3;
+static constexpr std::int32_t NUMBER_OF_EDGES_ADJMATRIX = 3;
 static constexpr std::int32_t MIN_NUMBER_OF_VERTEXES_ADJMATRIX = 10;
 static constexpr std::int32_t MAX_NUMBER_OF_VERTEXES_ADJMATRIX = 10000;
 
@@ -48,14 +49,14 @@ static void BM_BFS_AdjacencyMatrixGraph(benchmark::State &state) {
         std::int32_t weight = myRandom() % maxWeight + 1;
         graph.addEdge(vertex1, vertex2, weight);
     }
-    for (auto _: state) {
+    for (auto _ : state) {
         graph::BFS_1k bfs(graph, maxWeight);
         benchmark::DoNotOptimize(bfs.run(0));
     }
 }
 
-BENCHMARK(BM_BFS_AdjacencyMatrixGraph)->
-        Range(MIN_NUMBER_OF_VERTEXES_ADJMATRIX, MAX_NUMBER_OF_VERTEXES_ADJMATRIX)->
-        RangeMultiplier(STEP);
+BENCHMARK(BM_BFS_AdjacencyMatrixGraph)
+    ->Range(MIN_NUMBER_OF_VERTEXES_ADJMATRIX, MAX_NUMBER_OF_VERTEXES_ADJMATRIX)
+    ->RangeMultiplier(STEP);
 
 BENCHMARK_MAIN();

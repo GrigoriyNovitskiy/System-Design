@@ -14,6 +14,7 @@ target_link_libraries(GTest::Main INTERFACE gtest_main)
 
 add_executable(tests
         test_bfs1k.cpp
+        test_dijkstra.cpp
         test_graph.cpp
         main.cpp
 )

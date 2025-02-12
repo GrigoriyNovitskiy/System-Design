@@ -40,7 +40,7 @@ private:
 };
 
 template <typename edgeType>
-BFS_1k(AdjacencyListGraph<Edge<edgeType>>&, int, int) -> BFS_1k<edgeType>;
+BFS_1k(Graph<Edge<edgeType>>&, int, int) -> BFS_1k<edgeType>;
 
 template <typename edgeType>
 typename BFS_1k<edgeType>::BFSResult BFS_1k<edgeType>::run(std::int32_t startVertex) {
