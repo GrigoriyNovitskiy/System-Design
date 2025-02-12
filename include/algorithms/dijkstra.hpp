@@ -11,7 +11,7 @@ namespace graph {
 template <typename edgeType>
 class Dijkstra {
 public:
-    Dijkstra(Graph<edgeType>& graph) : m_graph(graph) {}
+    explicit Dijkstra(Graph<edgeType>& graph) : m_graph(graph) {}
 
     std::vector<std::int64_t> runStandard(std::int32_t start);
 

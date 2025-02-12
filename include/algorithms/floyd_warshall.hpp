@@ -11,7 +11,7 @@ namespace graph {
 template <typename edgeType>
 class FloydWarshall {
 public:
-    FloydWarshall(Graph<edgeType>& graph) : m_graph(graph) {}
+    explicit FloydWarshall(Graph<edgeType>& graph) : m_graph(graph) {}
 
     class FloydWarshallResult {
     public:

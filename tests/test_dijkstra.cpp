@@ -22,7 +22,7 @@ TEST(DijkstraTest, BaseTestList2) {
     graph.addEdge(2, 3, 1);
 
     graph::Dijkstra<int> dijkstra(graph);
-    auto distances = dijkstra.runOptimized(0);
+    auto distances = dijkstra.runStandard(0);
     std::vector<std::int64_t> correct_distances = {0, 1, 1, 2};
     ASSERT_EQ(distances, correct_distances);
 }
