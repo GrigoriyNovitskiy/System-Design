@@ -15,18 +15,18 @@ public:
 
     class FloydWarshallResult {
     public:
-        FloydWarshallResult(const std::vector<std::vector<std::int32_t>>& distances,
+        FloydWarshallResult(std::vector<std::vector<std::int64_t>>& distances,
                             bool has_negative_cycles)
             : m_distances(distances), m_has_negative_cycles(has_negative_cycles) {}
 
-        [[nodiscard]] const std::vector<std::vector<std::int32_t>>& distances() const {
+        [[nodiscard]] const std::vector<std::vector<std::int64_t>>& distances() const {
             return m_distances;
         }
 
         [[nodiscard]] const bool has_negative_cycles() const { return m_has_negative_cycles; }
 
     private:
-        std::vector<std::vector<std::int32_t>> m_distances;
+        std::vector<std::vector<std::int64_t>> m_distances;
         bool m_has_negative_cycles;
     };
 
@@ -42,27 +42,28 @@ FloydWarshall(AdjacencyMatrixGraph<Edge<edgeType>>&, int, int) -> FloydWarshall<
 
 template <typename edgeType>
 typename FloydWarshall<edgeType>::FloydWarshallResult FloydWarshall<edgeType>::run() {
-    std::vector<std::vector<std::int32_t>> distances(
+    std::vector<std::vector<std::int64_t>> distances(
         m_graph.numberVertices(),
-        std::vector<std::int32_t>(m_graph.numberVertices(),
-                                  std::numeric_limits<std::int32_t>::max()));
+        std::vector<std::int64_t>(m_graph.numberVertices(),
+                                  std::numeric_limits<std::int64_t>::max()));
 
-    for (int vertex = 0; vertex < m_graph.numberVertices(); vertex++) {
+    for (std::int32_t vertex = 0; vertex < m_graph.numberVertices(); vertex++) {
         distances[vertex][vertex] = 0;
 
         std::vector<Edge<edgeType>> neighbours;
         m_graph.getNeighbours(vertex, neighbours);
         for (const auto& edge : neighbours) {
-            distances[vertex][edge.to()] = std::min(distances[vertex][edge.to()], edge.edge());
+            distances[vertex][edge.to()] = std::min(distances[vertex][edge.to()], static_cast<std::int64_t>(edge.edge()));
         }
     }
 
-    for (int mid_vertex = 0; mid_vertex < m_graph.numberVertices(); mid_vertex++) {
-        for (int begin_vertex = 0; begin_vertex < m_graph.numberVertices(); begin_vertex++) {
-            for (int end_vertex = 0; end_vertex < m_graph.numberVertices(); end_vertex++) {
+    for (std::int32_t mid_vertex = 0; mid_vertex < m_graph.numberVertices(); mid_vertex++) {
+        for (std::int32_t begin_vertex = 0; begin_vertex < m_graph.numberVertices();
+             begin_vertex++) {
+            for (std::int32_t end_vertex = 0; end_vertex < m_graph.numberVertices(); end_vertex++) {
                 if (distances[begin_vertex][mid_vertex] !=
-                        std::numeric_limits<std::int32_t>::max() &&
-                    distances[mid_vertex][end_vertex] != std::numeric_limits<std::int32_t>::max()) {
+                        std::numeric_limits<std::int64_t>::max() &&
+                    distances[mid_vertex][end_vertex] != std::numeric_limits<std::int64_t>::max()) {
                     distances[begin_vertex][end_vertex] = std::min(
                         distances[begin_vertex][end_vertex],
                         distances[begin_vertex][mid_vertex] + distances[mid_vertex][end_vertex]);
@@ -73,7 +74,7 @@ typename FloydWarshall<edgeType>::FloydWarshallResult FloydWarshall<edgeType>::r
 
     bool has_negative_cycles = false;
 
-    for (int vertex = 0; vertex < m_graph.numberVertices(); vertex++) {
+    for (std::int32_t vertex = 0; vertex < m_graph.numberVertices(); vertex++) {
         has_negative_cycles |= (distances[vertex][vertex] != 0);
     }
 

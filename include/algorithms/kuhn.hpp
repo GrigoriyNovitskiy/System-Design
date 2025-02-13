@@ -11,11 +11,11 @@ namespace graph {
 template <typename edgeType>
 class KuhnMatching {
 public:
-    KuhnMatching(Graph<edgeType>& graph) : m_graph(graph) {}
+    explicit KuhnMatching(Graph<edgeType>& graph) : m_graph(graph) {}
 
     class MatchingResult {
     public:
-        MatchingResult(const std::vector<std::int32_t>& matching) : m_matching(matching) {}
+        explicit MatchingResult(const std::vector<std::int32_t>& matching) : m_matching(matching) {}
 
         [[nodiscard]] const std::vector<std::int32_t>& matching() const { return m_matching; }
 

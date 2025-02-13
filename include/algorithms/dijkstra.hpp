@@ -13,16 +13,25 @@ class Dijkstra {
 public:
     explicit Dijkstra(Graph<edgeType>& graph) : m_graph(graph) {}
 
-    std::vector<std::int64_t> runStandard(std::int32_t start);
+    class DijkstraResult {
+    public:
+        explicit DijkstraResult(const std::vector<std::int64_t>& distances) : m_distances(distances) {}
 
-    std::vector<std::int64_t> runOptimized(std::int32_t start);
+        [[nodiscard]] const std::vector<std::int64_t>& distances() const { return m_distances; }
+    private:
+        std::vector<std::int64_t> m_distances;
+    };
+
+    DijkstraResult runStandard(std::int32_t start);
+
+    DijkstraResult runOptimized(std::int32_t start);
 
 private:
     Graph<edgeType>& m_graph;
 };
 
 template <typename edgeType>
-std::vector<std::int64_t> Dijkstra<edgeType>::runStandard(std::int32_t start) {
+typename Dijkstra<edgeType>::DijkstraResult Dijkstra<edgeType>::runStandard(std::int32_t start) {
     std::vector<std::int64_t> distances(m_graph.numberVertices(),
                                         std::numeric_limits<std::int64_t>::max());
     std::vector<bool> visited(m_graph.numberVertices(), false);
@@ -49,18 +58,18 @@ std::vector<std::int64_t> Dijkstra<edgeType>::runStandard(std::int32_t start) {
         std::vector<Edge<edgeType>> neighbours;
         m_graph.getNeighbours(currentMinimumVertex, neighbours);
         for (const auto& edge : neighbours) {
-            std::int32_t newDistance = distances[currentMinimumVertex] + edge.edge();
+            std::int64_t newDistance = distances[currentMinimumVertex] + edge.edge();
             if (newDistance < distances[edge.to()]) {
                 distances[edge.to()] = newDistance;
             }
         }
     }
 
-    return distances;
+    return DijkstraResult{distances};
 }
 
 template <typename edgeType>
-std::vector<std::int64_t> Dijkstra<edgeType>::runOptimized(std::int32_t start) {
+typename Dijkstra<edgeType>::DijkstraResult Dijkstra<edgeType>::runOptimized(std::int32_t start) {
     std::vector<std::int64_t> distances(m_graph.numberVertices(),
                                         std::numeric_limits<std::int64_t>::max());
     std::vector<bool> visited(m_graph.numberVertices(), false);
@@ -69,11 +78,13 @@ std::vector<std::int64_t> Dijkstra<edgeType>::runOptimized(std::int32_t start) {
         std::int64_t distance;
         std::int32_t vertex;
 
-        bool operator>(const QueueNode& other) const { return distance > other.distance; }
+        bool operator>(const QueueNode& other) const {
+            return distance > other.distance;
+        }
     };
 
     distances[start] = 0;
-    std::priority_queue<QueueNode, std::vector<QueueNode>, std::greater<>> pq;
+    std::priority_queue<QueueNode, std::vector<QueueNode>, std::greater<QueueNode>> pq;
     pq.push({0, start});
 
     while (!pq.empty()) {
@@ -98,7 +109,7 @@ std::vector<std::int64_t> Dijkstra<edgeType>::runOptimized(std::int32_t start) {
         }
     }
 
-    return distances;
+    return DijkstraResult{distances};
 }
 
 }  // namespace graph
