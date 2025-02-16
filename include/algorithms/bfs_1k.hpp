@@ -71,6 +71,7 @@ BFS_1k(Graph<Edge<edgeType>>&, int, int) -> BFS_1k<edgeType>;
 
 // Реализация метода run, который выполняет алгоритм 1-k BFS.
 template <typename edgeType>
+requires OutputStreamable<edgeType> && Addable<edgeType> && IntAddable<edgeType>
 typename BFS_1k<edgeType>::BFSResult BFS_1k<edgeType>::run(std::int32_t startVertex) {
     // Инициализация вектора расстояний бесконечностью.
     std::vector<std::int32_t> distances(m_graph.numberVertices(),
