@@ -32,3 +32,5 @@
 | **BM_BFS_AdjacencyMatrixGraph/4096**      | 52369530 ns| 52370898 ns| 13         |
 
 ---
+
+

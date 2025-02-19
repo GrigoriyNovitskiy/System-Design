@@ -16,7 +16,7 @@ add_executable(tests
         test_bfs1k.cpp
         test_dijkstra.cpp
         test_graph.cpp
-        testFloydWarshall.cpp
+        test_floyd_warshall.cpp
         test_kuhn.cpp
         main.cpp
 )
