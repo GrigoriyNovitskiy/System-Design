@@ -1,6 +1,7 @@
 #ifndef BFS_1K_HPP
 #define BFS_1K_HPP
 
+#include <concepts>
 #include <limits>
 #include <queue>
 
@@ -10,6 +11,26 @@ namespace graph {
 
 // Класс BFS_1k реализует алгоритм 1-k BFS для графа с ограниченными весами рёбер.
 template <typename edgeType>
+concept OutputStreamable = requires(std::ostream& os, const edgeType& obj) {
+    os << obj;  // Проверяем, что результат можно передать в std::ostream
+};
+
+template <typename edgeType>
+concept Addable = requires(const edgeType& a, const edgeType& b) {
+    { a + b } -> std::convertible_to<edgeType>;  // Проверяем, что результат можно преобразовать к T
+};
+
+template <typename edgeType>
+concept IntAddable = requires(std::int32_t value, const edgeType& obj) {
+    {
+        value + obj
+        } -> std::convertible_to<std::int32_t>;  // Проверяем, что результат можно преобразовать к
+                                                 // int32_t
+};
+
+// Класс BFS_1k реализует алгоритм 1-k BFS для графа с ограниченными весами рёбер.
+template <typename edgeType>
+requires OutputStreamable<edgeType> && Addable<edgeType> && IntAddable<edgeType>
 class BFS_1k {
 public:
     // Конструктор, принимающий граф и максимальный вес ребра.
@@ -51,6 +72,7 @@ BFS_1k(Graph<Edge<edgeType>>&, int, int) -> BFS_1k<edgeType>;
 
 // Реализация метода run, который выполняет алгоритм 1-k BFS.
 template <typename edgeType>
+requires OutputStreamable<edgeType> && Addable<edgeType> && IntAddable<edgeType>
 typename BFS_1k<edgeType>::BFSResult BFS_1k<edgeType>::run(std::int32_t startVertex) {
     // Инициализация вектора расстояний бесконечностью.
     std::vector<std::int32_t> distances(m_graph.numberVertices(),
