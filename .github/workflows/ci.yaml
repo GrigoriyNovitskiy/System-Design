@@ -1,25 +1,31 @@
-name: CI
+name: C++ CI
 
-on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+on: [push, pull_request]
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-          - name: Install dependencies
-            run: |
-              sudo apt update
-              sudo apt install -y build-essential cmake
-              sudo apt install clang-format
-              sudo apt install cmake_format
+      - name: Set up CMake
+        uses: jwlawson/actions-setup-cmake@v1
+        with:
+          cmake-version: '3.19.0'
 
-          - name: Configure project with CMake
-            run: |
-              cmake -S . -B build
+      - name: Install dependencies
+        run: sudo apt-get install libgtest-dev && cd /usr/src/gtest && sudo cmake CMakeLists.txt && sudo make && sudo cp lib/*.a /usr/lib && sudo ln -s /usr/lib/libgtest.a /usr/local/lib/libgtest.a && sudo ln -s /usr/lib/libgtest_main.a /usr/local/lib/libgtest_main.a
+
+      - name: Build
+        run: |
+          mkdir build
+          cd build
+          cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS="-Werror" ..
+          cmake --build .
+
+      - name: Run tests
+        run: |
+          cd build/tests/
+          ./tests
