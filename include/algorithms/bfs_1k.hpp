@@ -9,6 +9,7 @@
 
 namespace graph {
 
+// Класс BFS_1k реализует алгоритм 1-k BFS для графа с ограниченными весами рёбер.
 template <typename edgeType>
 concept OutputStreamable = requires(std::ostream& os, const edgeType& obj) {
     os << obj;  // Проверяем, что результат можно передать в std::ostream

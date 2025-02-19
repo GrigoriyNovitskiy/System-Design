@@ -1,6 +1,11 @@
 # System-Design
 System Design homeworks HSE 2025
 
+## Авторы
+* Поволоцкий Роман [romanpovol](https://github.com/romanpovol)
+* Новицкий Григорий [GrigoriyNovitskiy](https://github.com/GrigoriyNovitskiy)
+* Филатов Юрий [YuriiFilatov](https://github.com/YuriiFilatov)
+
 ## Описание библиотеки
 В данной библиотеке представлен набор алгоритмов для анализа графов:
 
@@ -14,3 +19,18 @@ System Design homeworks HSE 2025
 | Алгоритм Куна | Поиск максимального паросочетания в двудольном графе | $O(VE)$ | На практике, с помощью оптимизаций работает довольно быстро |
 | Алгоритм Диница | Поиск максимального потока в сети | $O(VE\log C)$ | Использует слоистую сеть для оптимизации поиска кратчайших увеличивающих путей |
 | MinCost k-flow | Поиск потока $f: \|f\| = k, W(f) \rightarrow min$ | $O(VE + k\cdot Dijkstra)$ | Работает для циклов отрицательного веса |
+
+## Запуск библиотеки
+```
+mkdir build && cd build
+cmake ..
+cmake --build .
+```
+- В папке `build` будет лежать библиотека - `libSystem_Design`
+- Тесты- `./build/tests/tests`
+- Бенчмарки - `./build/tests/benchmarks/benchmarks`
+
+
+## Как контрибьютить в библиотеку
+- Добавить header файл в папку `include/algorithms/`, описать класс и работу функций аналогично написанным алгоритмам. 
+

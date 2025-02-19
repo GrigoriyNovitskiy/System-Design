@@ -1,4 +1,3 @@
-
 ## Архитектура
 
 ### Структура графов
@@ -53,3 +52,39 @@
     - `std::vector<std::int32_t> m_accessibility` - вектор достижимости
     - `const std::vector<std::int32_t>& distances()` - геттер вектора дистанций
     - `const std::vector<std::int32_t>& accessibility()` - геттер вектора достижимости
+
+#### Алгоритм Дейкстры
+`class Dijkstra <edgeType>`
+- Поля
+  - `Graph<edgeType>& m_graph` - граф
+- Методы
+  - `Dijkstra(Graph<edgeType>& graph)` - конструктор 
+  - `DijkstraResult runStandard(std::int32_t start)` - алгоритм за $O(n^2)$
+  - `DijkstraResult runOptimized(std::int32_t start)` - алгоритм за $O(E\log⁡V)$
+  - `class DijkstraResult`
+    - `std::vector<std::int64_t> m_distances` - вектор дистанций
+    - `const std::vector<std::int64_t>& distances()` - геттер вектора дистанций
+
+#### Алгоритм Флойда-Уоршелла
+`class FloydWarshall <edgeType>`
+- Поля
+  - `Graph<edgeType>& m_graph`
+- Методы
+  - `FloydWarshall(Graph<edgeType>& graph)` - конструктор
+  - `FloydWarshallResult run()` - запуск алгоритма
+  - `class FloydWarshallResult`
+    - `std::vector<std::vector<std::int64_t>> m_distances`- массив попарных расстояний
+    - `bool m_has_negative_cycles` - есть ли в графе цикл отрицательного веса
+    - `const std::vector<std::vector<std::int64_t>>& distances()` - геттер вектора дистанций
+    - `const bool has_negative_cycles()` - геттер индикатора наличия отрицательного цикла
+
+#### Алгоритм Куна
+`class KuhnMatching <edgeType>`
+- Поля
+  - `Graph<edgeType>& m_graph` - граф
+- Методы
+  - `KuhnMatching(Graph<edgeType>& graph)` - конструктор
+  - `MatchingResult run()` - запуск алгоритма
+  - `class MatchingResult`
+    - `std::vector<std::int32_t> m_matching` - вектор паросочетаний. Если паросочетания с вершиной `v` не существует, то `matching[v]=−1`
+    - `const std::vector<std::int32_t>& matching()` - гетер вектора паросочетаний.
