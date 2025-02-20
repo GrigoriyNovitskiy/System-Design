@@ -61,10 +61,13 @@ private:
 
 // Дедукция шаблона для конструктора BellmanFord
 template <typename edgeType>
-BellmanFord(Graph<edgeType>&, int) -> BellmanFord<edgeType>;
+requires OutputStreamable<edgeType> && Addable<edgeType> && IntAddable<edgeType> BellmanFord(
+    Graph<edgeType>&, int)
+->BellmanFord<edgeType>;
 
 // Реализация метода run() для алгоритма Форда-Беллмана
 template <typename edgeType>
+requires OutputStreamable<edgeType> && Addable<edgeType> && IntAddable<edgeType>
 typename BellmanFord<edgeType>::BellmanFordResult BellmanFord<edgeType>::run(
     std::int32_t start_vertex) {
     const std::int64_t INF = std::numeric_limits<std::int64_t>::max();
