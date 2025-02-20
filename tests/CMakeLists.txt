@@ -18,6 +18,7 @@ add_executable(tests
         test_graph.cpp
         test_floyd_warshall.cpp
         test_kuhn.cpp
+        test_bellman_ford.cpp
         main.cpp
 )
 

@@ -88,3 +88,16 @@
   - `class MatchingResult`
     - `std::vector<std::int32_t> m_matching` - вектор паросочетаний. Если паросочетания с вершиной `v` не существует, то `matching[v]=−1`
     - `const std::vector<std::int32_t>& matching()` - гетер вектора паросочетаний.
+  
+#### Алгоритм Беллмана-Форда
+`class BellmanFord <edgeType>`
+- Поля
+  - `Graph<edgeType>& m_graph` - граф
+- Методы
+  - `BellmanFord(Graph<edgeType>& graph)` - конструктор
+  - `BellmanFord run(std::int32_t start_vertex)` - запуск алгоритма
+  - `class BellmanFordResult`
+    - `std::vector<std::int64_t> m_distances` - вектор дистанций
+    - `bool m_has_negative_cycles` - есть ли в графе цикл отрицательного веса
+    - `const std::vector<std::int64_t>& distances()` - гетер вектора дистанций
+    - `const bool has_negative_cycles()` - геттер индикатора наличия отрицательного цикла

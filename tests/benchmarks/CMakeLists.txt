@@ -9,7 +9,9 @@ set(BENCHMARK_ENABLE_TESTING OFF)
 FetchContent_MakeAvailable(benchmark)
 
 add_executable(benchmarks
-        benchmarks_bfs1_k.cpp)
+        benchmarks_bfs1_k.cpp
+        benchmarks_dijkstra.cpp
+)
 
 target_link_libraries(benchmarks
         PRIVATE

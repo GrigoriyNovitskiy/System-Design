@@ -68,7 +68,8 @@ typename Dijkstra<edgeType>::DijkstraResult Dijkstra<edgeType>::runStandard(std:
         }
 
         // Если минимальное расстояние осталось бесконечным, выходим из цикла.
-        if (distances[currentMinimumVertex] == std::numeric_limits<std::int64_t>::max()) {
+        if (currentMinimumVertex == -1 ||
+            distances[currentMinimumVertex] == std::numeric_limits<std::int64_t>::max()) {
             break;
         }
 
