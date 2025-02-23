@@ -50,3 +50,39 @@
 Проанализировав бенчмарки можно сказать
 - При больших данных, `|V| = 100000` bfs работает быстрее алгоритма Дейкстры (`216312548 ns` против `260179425 ns`). Это происходит из-за того, что для 1-k bfs подходят ребра с ограниченными весами `(<= k)`, тогда как Дейкстра ограничена только неотрицательностью ребер. Если веса ребер в графе невелики, то лучше использовать 1-k bfs, иначе алгоритм Дейкстры
 - Список смежности гораздо оптимальнее матрицы смежности: (bfs) при `|V| = 32768` алгоритм на списке смежности работает за `61212262 ns`, при `|V| = 10000` алгоритм на матрице смежности работает за `158197948 ns` -- время в 2.5 раза больше, а размер графа в 3.2 раза меньше
+
+## MacOs 14.1 on Arm Architecture
+
+Running ./tests/benchmarks/benchmarks
+Run on (12 X 24.0741 MHz CPU s)
+CPU Caches:
+  L1 Data 64 KiB (x12)
+  L1 Instruction 128 KiB (x12)
+  L2 Unified 4096 KiB (x2)
+Load Average: 1.88, 2.50, 2.42
+***WARNING*** Library was built as DEBUG. Timings may be affected.
+------------------------------------------------------------------------------------
+Benchmark                                          Time             CPU   Iterations
+------------------------------------------------------------------------------------
+**BM_BFS_AdjacencyListGraph/10**               12718 ns        12709 ns        50945
+**BM_BFS_AdjacencyListGraph/64**               81650 ns        81626 ns         8741
+**BM_BFS_AdjacencyListGraph/512**             627042 ns       626720 ns         1109
+**BM_BFS_AdjacencyListGraph/4096**           5446492 ns      5444320 ns          125
+**BM_BFS_AdjacencyListGraph/32768**         56576724 ns     56551923 ns           13
+**BM_BFS_AdjacencyListGraph/100000**       191582208 ns    191471000 ns            4
+**BM_BFS_AdjacencyMatrixGraph/10**             17908 ns        17900 ns        39957
+**BM_BFS_AdjacencyMatrixGraph/64**            142945 ns       142857 ns         4980
+**BM_BFS_AdjacencyMatrixGraph/512**          2236574 ns      2235548 ns          314
+**BM_BFS_AdjacencyMatrixGraph/4096**        87782833 ns     87743750 ns            8
+**BM_BFS_AdjacencyMatrixGraph/10000**      494430917 ns    493038000 ns            2
+**BM_Dijkstra_AdjacencyListGraph/10**          36682 ns        36661 ns        17926
+**BM_Dijkstra_AdjacencyListGraph/64**         248656 ns       247972 ns         2792
+**BM_Dijkstra_AdjacencyListGraph/512**       2223528 ns      2218045 ns          310
+**BM_Dijkstra_AdjacencyListGraph/4096**     20052891 ns     19891162 ns           37
+**BM_Dijkstra_AdjacencyListGraph/32768**   163564260 ns    163248000 ns            4
+**BM_Dijkstra_AdjacencyListGraph/100000**  529136209 ns    528140000 ns            1
+**BM_Dijkstra_AdjacencyMatrixGraph/10**        21048 ns        20880 ns        34014
+**BM_Dijkstra_AdjacencyMatrixGraph/64**       331813 ns       331050 ns         1856
+**BM_Dijkstra_AdjacencyMatrixGraph/512**     9222218 ns      9206187 ns           75
+**BM_Dijkstra_AdjacencyMatrixGraph/4096**  306549604 ns    305759000 ns            2
+**BM_Dijkstra_AdjacencyMatrixGraph/5000**  428355417 ns    427283000 ns            2
