@@ -97,9 +97,10 @@ CPU Caches:
   L2 Unified 1 Mb (x2)
   L3 9 Mb
 ***WARNING*** Library was built as DEBUG. Timings may be affected.
+---
 ------------------------------------------------------------------------------------
-Benchmark                                          Time             CPU   Iterations
----------------------------------------------------------------------------------------------
+| Benchmark                                |          Time   |          CPU       |   Iterations|
+-------------------------------------------|-----------------|--------------------|-------------|
 | **BM_BFS_AdjacencyListGraph/10**         |        12536 ns |       12400 ns     |   50945  |
 | **BM_BFS_AdjacencyListGraph/64**         |        81111 ns |       816909 ns    |     8741 |
 | **BM_BFS_AdjacencyListGraph/512**        |       634234 ns |      6268709 ns    |     1109 |
@@ -122,3 +123,4 @@ Benchmark                                          Time             CPU   Iterat
 | **BM_Dijkstra_AdjacencyMatrixGraph/512** |    92222878 ns  |    977576187 ns    |       75 |
 | **BM_Dijkstra_AdjacencyMatrixGraph/4096**| 306549755874 ns |    3057757 ns      |      2   |
 | **BM_Dijkstra_AdjacencyMatrixGraph/5000**|  42835797997 ns |   4272837570 ns    |        2 |
+---
