@@ -86,3 +86,39 @@ Benchmark                                          Time             CPU   Iterat
 **BM_Dijkstra_AdjacencyMatrixGraph/512**     9222218 ns      9206187 ns           75
 **BM_Dijkstra_AdjacencyMatrixGraph/4096**  306549604 ns    305759000 ns            2
 **BM_Dijkstra_AdjacencyMatrixGraph/5000**  428355417 ns    427283000 ns            2
+
+## Windows 11
+
+Running ./tests/benchmarks/benchmarks
+Run on (12 X 3.7 GHz CPU s)
+CPU Caches:
+  L1 Data 64 KiB (x12)
+  L1 Instruction 128 KiB (x12)
+  L2 Unified 1 Mb (x2)
+  L3 9 Mb
+***WARNING*** Library was built as DEBUG. Timings may be affected.
+------------------------------------------------------------------------------------
+Benchmark                                          Time             CPU   Iterations
+------------------------------------------------------------------------------------
+**BM_BFS_AdjacencyListGraph/10**               12536 ns        12400 ns        50945
+**BM_BFS_AdjacencyListGraph/64**               81111 ns        816909 ns         8741
+**BM_BFS_AdjacencyListGraph/512**             634234 ns       6268709 ns         1109
+**BM_BFS_AdjacencyListGraph/4096**           5466478 ns      54443454 ns          125
+**BM_BFS_AdjacencyListGraph/32768**         5218045 ns     565516546 ns           13
+**BM_BFS_AdjacencyListGraph/100000**       191582308 ns    191473435 ns            4
+**BM_BFS_AdjacencyMatrixGraph/10**             17999 ns        200011 ns        39957
+**BM_BFS_AdjacencyMatrixGraph/64**            143456 ns       142857 ns         4980
+**BM_BFS_AdjacencyMatrixGraph/512**          2123232 ns      22357578 ns          314
+**BM_BFS_AdjacencyMatrixGraph/4096**        87787745 ns     87747575 ns            8
+**BM_BFS_AdjacencyMatrixGraph/10000**      491113217 ns    493038000 ns            2
+**BM_Dijkstra_AdjacencyListGraph/10**          36682 ns        36661 ns        17926
+**BM_Dijkstra_AdjacencyListGraph/64**         232326 ns       247972 ns         2792
+**BM_Dijkstra_AdjacencyListGraph/512**       2223528 ns      2218045 ns          310
+**BM_Dijkstra_AdjacencyListGraph/4096**     2032321 ns     19891162 ns           37
+**BM_Dijkstra_AdjacencyListGraph/32768**   163232320 ns    163248000 ns            4
+**BM_Dijkstra_AdjacencyListGraph/100000**  5296575809 ns    5281757570 ns            1
+**BM_Dijkstra_AdjacencyMatrixGraph/10**        299044 ns        20757 ns        34014
+**BM_Dijkstra_AdjacencyMatrixGraph/64**       331844 ns       337577 ns         1856
+**BM_Dijkstra_AdjacencyMatrixGraph/512**     92222878 ns      977576187 ns           75
+**BM_Dijkstra_AdjacencyMatrixGraph/4096**  306549755874 ns    3057757 ns            2
+**BM_Dijkstra_AdjacencyMatrixGraph/5000**  42835797997 ns    4272837570 ns            2
