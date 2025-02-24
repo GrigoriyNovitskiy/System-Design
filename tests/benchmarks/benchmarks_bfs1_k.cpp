@@ -17,7 +17,7 @@ static void BM_BFS_AdjacencyListGraph(benchmark::State &state) {
     const std::int32_t numberOfVertexes = state.range(0);
     const std::int32_t numberOfEdges = NUMBER_OF_EDGES_ADJLIST * numberOfVertexes;
     const std::int32_t maxWeight = numberOfVertexes;
-    graph::AdjacencyListGraph<int> graph(numberOfEdges, false);
+    graph::AdjacencyListGraph<int> graph(numberOfVertexes, false);
     for (int i = 0; i < numberOfEdges; i++) {
         std::int32_t vertex1 = myRandom() % numberOfVertexes;
         std::int32_t vertex2 = myRandom() % numberOfVertexes;
@@ -42,7 +42,7 @@ static void BM_BFS_AdjacencyMatrixGraph(benchmark::State &state) {
     const std::int32_t numberOfVertexes = state.range(0);
     const std::int32_t numberOfEdges = NUMBER_OF_EDGES_ADJMATRIX * numberOfVertexes;
     const std::int32_t maxWeight = numberOfVertexes;
-    graph::AdjacencyMatrixGraph<int> graph(numberOfEdges, false);
+    graph::AdjacencyMatrixGraph<int> graph(numberOfVertexes, false);
     for (int i = 0; i < numberOfEdges; i++) {
         std::int32_t vertex1 = myRandom() % numberOfVertexes;
         std::int32_t vertex2 = myRandom() % numberOfVertexes;

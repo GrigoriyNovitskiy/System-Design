@@ -27,10 +27,16 @@
 | **BM_BFS_AdjacencyListGraph/32768**       | 21228884 ns| 21226063 ns| 31         |
 | **BM_BFS_AdjacencyListGraph/100000**      | 84927447 ns| 84924761 ns| 9          |
 | **BM_BFS_AdjacencyMatrixGraph/10**        | 1397 ns    | 1397 ns    | 514880     |
-| **BM_BFS_AdjacencyMatrixGraph/64**        | 15439 ns   | 15439 ns   | 44820      |
-| **BM_BFS_AdjacencyMatrixGraph/512**       | 999791 ns   | 999744 ns   | 706        |
-| **BM_BFS_AdjacencyMatrixGraph/4096**      | 52369530 ns| 52370898 ns| 13         |
+| **BM_BFS_AdjacencyMatrixGraph/64**        | 10175 ns   | 10158 ns   | 62662      |
+| **BM_BFS_AdjacencyMatrixGraph/512**       | 417794 ns   | 416448 ns   | 1873        |
+| **BM_BFS_AdjacencyMatrixGraph/4096**      | 20905303 ns| 20888660 ns| 35         |
+| **BM_BFS_AdjacencyMatrixGraph/10000**     | 139143303 ns| 138866862 ns| 5         |
 
 ---
+
+### Выводы
+- При ```|V| = 4096``` происходит резкий скачок времени работы, но проблема не в алгоритме, а в том, что стало больше промахов по кешу. В остальном время работы растет линейно, что справедливо для алгоритма
+- Для BFS список смежности даже при минимальных ```|V|``` работает лучше, поэтому лучше использовать его
+
 
 

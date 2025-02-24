@@ -30,6 +30,10 @@ cmake --build .
 - Тесты- `./build/tests/tests`
 - Бенчмарки - `./build/tests/benchmarks/benchmarks`
 
+## Зависимости
+- `gtest` для тестирования
+- `google benchmark` для бенчмарок
+
 
 ## Как контрибьютить в библиотеку
 - Добавить header файл в папку `include/algorithms/`, описать класс и работу функций аналогично написанным алгоритмам. 
