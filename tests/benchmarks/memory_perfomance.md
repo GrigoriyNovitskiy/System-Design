@@ -2,6 +2,11 @@
 
 Использовался профайлер [heaptrack](https://github.com/KDE/heaptrack)
 
+### Метрики
+- Peak Memory (Пиковое использование памяти)
+- Temporary Allocations (Временные аллокации)
+- Memory Leaks (Утечки памяти)
+
 ### Использование памяти при тесте `benchmarks_bfs1_k.cpp`:
 - Most memory allocations - `graph::BFS_1k<int>::run(int)`
 	- `BM_BFS_AdjacencyListGraph(benchmark::State&)` - 11069484 allocations, 3530578 temporary

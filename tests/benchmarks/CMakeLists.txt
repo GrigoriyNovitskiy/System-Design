@@ -11,6 +11,7 @@ FetchContent_MakeAvailable(benchmark)
 add_executable(benchmarks
         benchmarks_bfs1_k.cpp
         benchmarks_dijkstra.cpp
+        main.cpp
 )
 
 target_link_libraries(benchmarks

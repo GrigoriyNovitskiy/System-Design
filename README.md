@@ -33,4 +33,15 @@ cmake --build .
 
 ## Как контрибьютить в библиотеку
 - Добавить header файл в папку `include/algorithms/`, описать класс и работу функций аналогично написанным алгоритмам
-
+- Добавить описание и архитектуру в `architecture.md`
+- Добавить тесты для алгоритма 
+	- Создать файл вида `test_algo_name.cpp` и написать сами тесты
+	- В `tests/CMakeLists.txt` добавить `test_algo_name.cpp` в секцию `add_executable`
+	- Если при написании теста понадобилось что-то, не относящееся непосредственно к алгоритму, вынести это в файл `/tests/utility.hpp`
+	- Тесты используют библиотеку `gtest`
+- Для создания бенчмарок
+	- Создать файл вида `benchmarks_algo_name.cpp` и написать функции для измерения времени работы
+	- В `tests/benchmarks/CMakeLists.txt` добавить `benchmarks_algo_name.cpp` в секцию `add_executable`
+	- Для измерения затрачиваемой памяти используется утилита [heaptrack](https://github.com/KDE/heaptrack)
+	- `heaptrack ./build/tests/benchmarks/benchmarks` -- команда для запуска сборки метрик
+	- `heaptrack_gui heaptrack.benchmarks.***.zst` -- команда для запуска UI

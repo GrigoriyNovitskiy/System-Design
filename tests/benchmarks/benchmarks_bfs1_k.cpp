@@ -58,5 +58,3 @@ static void BM_BFS_AdjacencyMatrixGraph(benchmark::State &state) {
 BENCHMARK(BM_BFS_AdjacencyMatrixGraph)
     ->Range(MIN_NUMBER_OF_VERTEXES_ADJMATRIX, MAX_NUMBER_OF_VERTEXES_ADJMATRIX)
     ->RangeMultiplier(STEP);
-
-BENCHMARK_MAIN();
