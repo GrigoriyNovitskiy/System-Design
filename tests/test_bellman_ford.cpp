@@ -26,7 +26,7 @@ TEST(BellmanFordTest, CustomEdgeTest) {
     graph::BellmanFord<Edge> bellman_ford(graph);
     auto bellman_ford_result = bellman_ford.run(0);
     std::vector<std::int64_t> correct_distances =
-        correct_distances = {0, 1, 3, 6, std::numeric_limits<std::int64_t>::max()};
+        {0, 1, 3, 6, std::numeric_limits<std::int64_t>::max()};
     ASSERT_EQ(bellman_ford_result.distances(), correct_distances);
 }
 

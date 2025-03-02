@@ -70,6 +70,11 @@ template <typename edgeType>
 requires OutputStreamable<edgeType> && Addable<edgeType> && IntAddable<edgeType>
 typename BellmanFord<edgeType>::BellmanFordResult BellmanFord<edgeType>::run(
     std::int32_t start_vertex) {
+    if (!m_graph.isVertexValid(start_vertex)) {
+        std::stringstream error;
+        error << "Start vertex is out of bounds: " << start_vertex << '\n';
+        throw std::domain_error(error.str());
+    }
     const std::int64_t INF = std::numeric_limits<std::int64_t>::max();
 
     // Инициализация вектора расстояний бесконечными значениями
@@ -103,7 +108,7 @@ typename BellmanFord<edgeType>::BellmanFordResult BellmanFord<edgeType>::run(
             }
         }
     }
-
+    
     // Возвращение результата выполнения алгоритма
     return BellmanFordResult{distances, has_negative_cycles};
 }
