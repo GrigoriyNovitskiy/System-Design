@@ -32,4 +32,8 @@ inline std::int32_t operator+(std::int32_t value, const Edge& edge) {
     return value + edge.weight();
 }
 
+inline std::int64_t operator+(std::int64_t value, const Edge& edge) {
+    return value + edge.weight();
+}
+
 #endif  // UTILITY_TESTS
