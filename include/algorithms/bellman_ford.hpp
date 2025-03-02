@@ -108,7 +108,7 @@ typename BellmanFord<edgeType>::BellmanFordResult BellmanFord<edgeType>::run(
             }
         }
     }
-    
+
     // Возвращение результата выполнения алгоритма
     return BellmanFordResult{distances, has_negative_cycles};
 }
